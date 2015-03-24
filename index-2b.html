@@ -1,0 +1,554 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<link href="style/new-style.css" rel="stylesheet" type="text/css">
+<script src="http://code.jquery.com/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.carouFredSel-6.2.0-packed.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(e) {
+    
+    jQuery(".m-sliber-main").each(function(index){
+        var ths = jQuery(this),
+            thsSlider = false,
+            $images = ths.find(".m-innerImages-box"),
+            $labels = ths.find(".m-slider-select-block");
+        $images.carouFredSel({
+            items: {
+                visible:1,
+                start:0
+            },
+            auto:false,
+            width:563,
+            onCreate:function(){
+                thsSlider = jQuery(this);
+                $labels.eq(0).addClass("active");
+            },
+            scroll:{
+                onBefore:function(){
+                    thsSlider.addClass("sli-now");
+                    
+                    $labels.closest(".m-sliber-main")
+                           .find(".m-slider-select-block")
+                           .removeClass("active");
+                },
+                onAfter:function(data){
+                    thsSlider.removeClass("sli-now");
+                    
+                    var tmp = thsSlider.triggerHandler("currentPosition");
+                    $labels.eq(tmp).addClass("active");
+                }
+            },
+            pagination: '.m-slider-pagination'
+        });
+
+        $labels.click(function(){
+            if(!thsSlider || thsSlider.hasClass("sli-now")){return;};
+            
+            var ths = jQuery(this),
+                checkPoint = ths.index();
+            ths.closest(".m-sliber-main")
+               .find(".m-slider-select-block")
+               .removeClass("active");
+            ths.addClass("active");
+            thsSlider.trigger("slideTo", checkPoint)
+        });
+    });
+    
+});
+</script>
+</head>
+
+<body>
+<div class="pop-up">
+	<div class="login-block">
+    	<div class="close-pop-up"></div>
+        <div class="logo-pop-up">
+        
+        </div>
+        <div class="form">
+        	<div class="input-block input-block-log input-block-name">
+            	<input type="text" placeholder="">
+            </div>
+            <div class="input-block input-block-log input-block-pass">
+            	<input type="password" placeholder="">
+            </div>
+           
+            <a href="" class="m-item-best-performance-button-add-friend">Войти</a>
+           
+        </div>
+        Еще нет аккаунта? <a href="" class="a-reg">Зарегистрируйтесь</a> прямо сейчас
+    </div>
+</div>
+<div class="pop-up">
+	<div class="login-block reg-block">
+    	<div class="close-pop-up"></div>
+        <div class="logo-pop-up">
+        
+        </div>
+        <div class="form">
+        	<div class="left-form">
+            	<div class="input-block-head">Имя</div>
+            	<div class="input-block input-block-name">
+                    <input type="text" placeholder="">
+                </div> 
+                <div class="input-block-head">Фамилия</div>
+            	<div class="input-block input-block-name">
+                    <input type="text" placeholder="">
+                </div> 
+                <div class="input-block-head">Дата рождения</div>
+            	
+                    <div class="m-header-select pop-up-select pop-up-select-data">
+                    	<select class="m-custom-select">
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                        </select>
+                    </div>
+                    
+                    <div class="m-header-select pop-up-select pop-up-select-mou">
+                    	<select class="m-custom-select">
+                            <option>Сентябрь</option>
+                            <option>Сентябрь</option>
+                            <option>Сентябрь</option>
+                            <option>Сентябрь</option>
+                            <option>Сентябрь</option>
+                        </select>
+                    </div>
+                 	<div class="m-header-select pop-up-select pop-up-select-ear">
+                    	<select class="m-custom-select">
+                            <option>1986</option>
+                            <option>1986</option>
+                            <option>1986</option>
+                            <option>1986</option>
+                            <option>1986</option>
+                        </select>
+                    </div>
+                <div class="input-block-head">Пароль</div>
+            	<div class="input-block input-block-name">
+                    <input type="password" placeholder="">
+                </div> 
+                <br>
+                Создавая свой аккаунт вы соглашаетесь<br> 
+с <a href="" class="a-reg">правилами</a> пользования сайтом 
+            </div>
+            <div class="right-form">
+            	<div class="input-block-head">E-mail</div>
+            	<div class="input-block input-block-pass">
+                    <input type="text" placeholder="">
+                </div>
+                <div class="input-block-head">Страна</div>
+            	<div class="m-header-select pop-up-select pop-up-select-count">
+                    	<select class="m-custom-select">
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                        </select>
+                    </div>
+                <div class="input-block-head">Город</div>
+            	<div class="m-header-select pop-up-select pop-up-select-sity">
+                    	<select class="m-custom-select">
+                            <option>22</option>
+                            <option>23</option>
+                            <option>24</option>
+                            <option>25</option>
+                            <option>26</option>
+                        </select>
+                    </div>
+                <div class="input-block-head">Повторите пароль</div>
+            	<div class="input-block input-block-pass">
+                    <input type="password" placeholder="">
+                </div>
+                <a href="" class="m-item-best-performance-button-add-friend">Зарегистрироваться</a>
+            </div>
+            <div class="clear"></div>    
+                
+           
+           		
+           
+        </div>
+       
+    </div>
+</div>
+<div class="main">
+	<div class="m-header">
+    	<div class="m-table">
+            <a href="" class="m-logo"></a>
+            <div class="m-menu">
+                <a href="" class="m-menu-a current">Главная</a>
+                <a href="" class="m-menu-a">Главная</a>
+                <a href="" class="m-menu-a">Доска объявлений</a>
+                <a href="" class="m-menu-a">Новости</a>
+                <a href="" class="m-menu-a">Рейтинг</a>
+            </div>
+            <div class="m-reg-header">
+                <a href="" class="m-menu-a">Вход</a>
+                <a href="" class="m-menu-a">Услуги</a>
+            </div>
+        </div>
+    	<div class="m-slider">
+            <div class="m-slider-wrap">
+                <div class="m-slider-block">
+                	<div class="m-sliber-main">
+                    	<div class="m-innerImages-box">
+                            <div class="m-slider-main-sel">
+                                <img src="img/temp/16a.jpg" width="563" height="470" alt=""/> 
+
+                                <div class="m-slider-main-sel-info">
+                                Бамбуковая деревня от Elora Hardy
+                                </div>
+                            </div>
+                            <div class="m-slider-main-sel">
+                                <img src="img/temp/16a.jpg" width="563" height="470" alt=""/> 
+
+                                <div class="m-slider-main-sel-info">
+                                Бамбуковая деревня от Elora Hardy
+                                </div>
+                            </div>
+                            <div class="m-slider-main-sel">
+                                <img src="img/temp/16a.jpg" width="563" height="470" alt=""/> 
+
+                                <div class="m-slider-main-sel-info">
+                                Бамбуковая деревня от Elora Hardy
+                                </div>
+                            </div>
+                            <div class="m-slider-main-sel">
+                                <img src="img/temp/16a.jpg" width="563" height="470" alt=""/> 
+
+                                <div class="m-slider-main-sel-info">
+                                Бамбуковая деревня от Elora Hardy
+                                </div>
+                            </div>
+                        </div>
+                    	<div class="m-slider-main-select">
+                        	<div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                            <div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                            <div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                            <div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                        </div>
+                    </div>
+                    
+<!--
+                    <div class="m-sliber-main">
+                    	<div class="m-slider-main-sel">
+                   	    <img src="img/temp/16.jpg" width="910" height="470" alt=""/> 
+                        	<div class="m-slider-main-sel-info">
+                            Бамбуковая деревня от Elora Hardy
+                            </div>
+                        </div>
+                    	<div class="m-slider-main-select">
+                        	<div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                            <div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                            <div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                            <div class="m-slider-select-block">
+                            	<div class="m-slider-select-block-img">
+                           			<img src="img/temp/15.jpg" width="126" height="74" alt=""/> 
+                            	</div>
+                            	Белоснежный особняк La Palma в Мексике
+                            </div>
+                        </div>
+                    </div>
+-->
+                </div>
+            </div>
+        </div>
+        <div class="header-bg">
+        	<div class="m-table bg">
+            	<div class="m-slider-pagination"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="m-content">
+        <div class="m-table">
+        	<div class="m-block m-news">
+                <div class="m-block-header">
+                	<div class="m-block-header-txt">
+                    	Новости
+                    </div>
+                    <div class="m-header-select">
+                    	<select class="m-custom-select">
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="m-block-item">
+                    <div class="m-item-news-avatar">
+                        <div class="m-item-news-avatar-img">
+                        	<img src="img/temp/3.jpg" width="60" height="60" alt=""/>
+                        </div>
+                        <div class="m-item-news-avatar-name">
+                        	 Вадим<br>
+                            Смирнов
+                        </div>
+                    </div>
+                    <div class="m-item-news-content">
+                        <div class="m-item-news-content-img">
+                            <div class="m-item-news-content-img-before"></div>
+                            <img src="img/temp/2.jpg" width="240" height="166" alt=""/>
+                            <div class="m-item-news-content-add-bookmark"><span>В закладки</span></div>
+                        </div>
+                        <div class="m-item-news-content-txt">
+                            <a href="" class="m-item-news-content-txt-title">
+                            Достоинства нового деревянного дома
+                            </a>
+                            <p>
+                                Использование дерева связано с нашим суровым климатом, а дома из него считаются самыми тёплыми и удобными.
+                            </p>
+                            <div class="m-item-news-content-txt-tag">
+                                <a href="">дерево</a>
+                                        <a href="">климат</a>
+                                        <a href="">дом</a>
+                                        <a href="">тёплый</a>
+                                        <a href="">удобный</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-block-item">
+                    <div class="m-item-news-avatar">
+                        <div class="m-item-news-avatar-img">
+                        	<img src="img/temp/3.jpg" width="60" height="60" alt=""/>
+                        </div>
+                        <div class="m-item-news-avatar-name">
+                        	 Вадим<br>
+                            Смирнов
+                        </div>
+                    </div>
+                    <div class="m-item-news-content">
+                        <div class="m-item-news-content-img">
+                            <div class="m-item-news-content-img-before"></div>
+                            <img src="img/temp/2.jpg" width="240" height="166" alt=""/>
+                            <div class="m-item-news-content-add-bookmark"><span>В закладки</span></div>
+                        </div>
+                        <div class="m-item-news-content-txt">
+                            <a href="" class="m-item-news-content-txt-title">
+                            Достоинства нового деревянного дома
+                            </a>
+                            <p>
+                                Использование дерева связано с нашим суровым климатом, а дома из него считаются самыми тёплыми и удобными.
+                            </p>
+                            <div class="m-item-news-content-txt-tag">
+                                <a href="">дерево</a>
+                                        <a href="">климат</a>
+                                        <a href="">дом</a>
+                                        <a href="">тёплый</a>
+                                        <a href="">удобный</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="m-block m-best-performance">
+                <div class="m-block-header">
+                	<div class="m-block-header-txt">
+                    	ЛУЧШИЕ РАБОЧИЕ
+                    </div>
+                    <div class="m-header-select">
+                    	<select class="m-custom-select">
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="m-block-item-best-performance">
+                    <div class="m-item-news-avatar">
+                        <div class="m-item-news-avatar-img">
+                        	<img src="img/temp/8.jpg" width="77" height="78" alt="">
+                        </div>
+                        <div class="m-item-news-avatar-name">
+                        	 Вадим<br>
+                            Смирнов
+                        </div>
+                    </div>
+                    <div class="m-item-best-performance-content">
+                        <div class="m-item-best-performance-content-txt">
+                                <a href="" class="m-item-best-performance-content-txt-name">Иван Колонский</a>
+                                <span class="m-item-best-performance-content-txt-prof">Arcmaster</span>
+                                <span class="m-item-best-performance-content-txt-city">Харьков</span>
+                                <span class="m-item-best-performance-content-txt-post">
+                                Ландшафтный дизайн, 
+                                проектирование, освещение,
+                                макетирование</span>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="m-item-best-performance-button">
+                        <a href="" class="m-item-best-performance-button-rev">Отзывы (76)</a>
+                        <a href="" class="m-item-best-performance-button-add-friend">Добавить в друзья</a>
+                            
+                     </div>
+                </div>
+            </div>
+            
+            <div class="m-block m-project">
+                <div class="m-block-header">
+                	<div class="m-block-header-txt">
+                    	Проекты 
+                    </div>
+                    <div class="m-header-select">
+                    	<select class="m-custom-select">
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                            <option>Популярные</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="m-block-item-project">
+                	<div class="m-item-news-avatar">
+                        <div class="m-item-news-avatar-img">
+                        	<img src="img/temp/3.jpg" width="60" height="60" alt=""/>
+                        </div>
+                        <div class="m-item-news-avatar-name">
+                        	 Вадим<br>
+                            Смирнов
+                        </div>
+                    </div>
+                    <div class="m-item-news-content">
+                        <div class="m-item-news-content-img m-vacancy-cost">
+                           		<div class="m-vacancy-cost-number">15 000 грн.</div>
+                                <div class="m-vacancy-name">
+                                	Разовая работа
+                                </div>
+                        </div>
+                        <div class="m-item-news-content-txt">
+                            <a href="" class="m-item-news-content-txt-title">
+                            Заработок дизайнерам, архитекторам, прорабам
+                            </a>
+                            <p>
+                               
+                                    Работа в строительстве:
+Изготавливаем и монтируем гипсовые и полиуретановые карнизы, молдинги, фризы, колонны... Предлагаю сотрудничество всем, кто строит, ремонтирует, планирует... 15 % - ВАМ от суммы заказа.
+                                
+                            </p>
+                            <div class="m-item-news-content-txt-tag">
+                                <a href="">дерево</a>
+                                        <a href="">климат</a>
+                                        <a href="">дом</a>
+                                        <a href="">тёплый</a>
+                                        <a href="">удобный</a>
+                            </div>
+                            <br>
+                            <a href="" class="m-item-best-performance-button-rev">Посмотреть предложение</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="m-statistics">
+    	<div class="m-table">
+           <div class="m-statistics-h1"> 
+           		<div>Статистика</div>
+           </div>
+            <div class="m-statistics-block">
+                <div class="m-block-shape m-one-shape">
+                    <div class="m-shape"></div>
+                </div>
+                <div class="m-stat-txt">
+                    <span>18 357</span>
+                    новостей
+                 </div>
+            </div>
+            <div class="m-statistics-block">
+                <div class="m-block-shape m-two-shape">
+                    <div class="m-shape"></div>
+                </div>
+                 <div class="m-stat-txt">
+                     <span>9 357</span>
+                    пользователей
+                </div>
+            </div>
+            <div class="m-statistics-block">
+                <div class="m-block-shape m-tree-shape">
+                    <div class="m-shape"></div>
+                </div>
+                <div class="m-stat-txt">
+                    <span>1 538</span>
+                    проектов
+                </div>
+            </div>
+            
+               
+        </div>
+    </div>
+    <div class="m-footer">
+    	<div class="m-table">
+        	<div class="m-footer-copy">
+            	© 2014 Gagdlen. <br>
+Строительная социальная сеть
+            </div>
+            <a href="" class="m-footer-logo">
+            
+            </a>
+            <div class="m-menu footer-menu">
+                <a href="" class="m-menu-a current">Главная</a>
+                <a href="" class="m-menu-a">Доска объявлений</a>
+                <a href="" class="m-menu-a">Новости</a>
+                <a href="" class="m-menu-a">Рейтинг</a>
+            </div>
+            <div class="footer-copy-company">
+            	Cайт разработан 
+                компанией Awebia
+            </div>
+        </div>	
+    </div>
+    
+</div>
+</body>
+</html>
